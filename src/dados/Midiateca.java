@@ -16,7 +16,7 @@ public class Midiateca implements Iterador {
 	}
 
 	public boolean cadastraMidia(Midia midia) {
-		return true;
+		return false;
 	}
 
 	public Midia consultaPorCodigo(int codigo) {
@@ -28,7 +28,7 @@ public class Midiateca implements Iterador {
 	}
 
 	public boolean removeMidia(int codigo) {
-		return true;
+		return false;
 	}
 
 	@Override

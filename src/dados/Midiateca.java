@@ -16,32 +16,59 @@ public class Midiateca implements Iterador {
 	}
 
 	public boolean cadastraMidia(Midia midia) {
-		return false;
+		for (Midia m : midias) {
+			if (m.getCodigo() == midia.getCodigo()) {
+				return false;
+			}
+		}
+		midias.add(midia);
+		return true;
 	}
 
 	public Midia consultaPorCodigo(int codigo) {
+		for (Midia m : midias) {
+			if (m.getCodigo() == codigo) {
+				return m;
+			}
+		}
 		return null;
 	}
 
 	public ArrayList<Midia> consultaPorCategoria(Categoria categoria) {
-		return null;
+		ArrayList<Midia> result = new ArrayList<>();
+		for (Midia m : midias) {
+			if (m.getCategoria() == categoria) {
+				result.add(m);
+			}
+		}
+		return result;
 	}
 
 	public boolean removeMidia(int codigo) {
+		for (Midia m : midias) {
+			if (m.getCodigo() == codigo) {
+				midias.remove(m);
+				return true;
+			}
+		}
 		return false;
 	}
 
 	@Override
 	public void reset() {
+		contador = 0;
 	}
 
 	@Override
 	public boolean hasNext() {
-		return false;
+		return contador < midias.size();
 	}
 
 	@Override
 	public Object next() {
+		if (this.hasNext()) {
+			return midias.get(contador++);
+		}
 		return null;
 	}
 

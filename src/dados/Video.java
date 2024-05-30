@@ -9,6 +9,10 @@ public class Video extends Midia {
 		this.qualidade = qualidade;
 	}
 
+	public int getQualidade() {
+		return qualidade;
+	}
+
 	@Override
 	public double calculaLocacao() {
 		double valorLocacao = 0.0;

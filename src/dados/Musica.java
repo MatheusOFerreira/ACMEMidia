@@ -9,6 +9,10 @@ public class Musica extends Midia {
 		this.duracao = duracao;
 	}
 
+	public double getDuracao() {
+		return duracao;
+	}
+
 	@Override
 	public double calculaLocacao() {
 		double valorPorMinuto = 0.0;

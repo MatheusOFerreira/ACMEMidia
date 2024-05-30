@@ -8,14 +8,15 @@ public class Midiateca implements Iterador {
 	private ArrayList<Midia> midias;
 
 	public Midiateca() {
-	}
-
-	public Midiateca(int contador, ArrayList<Midia> midias) {
-		this.contador = contador;
-		this.midias = midias;
+		this.contador = 0;
+		this.midias = new ArrayList<>();
 	}
 
 	public boolean cadastraMidia(Midia midia) {
+		if (midias.isEmpty()) {
+			midias.add(midia);
+			return true;
+		}
 		for (Midia m : midias) {
 			if (m.getCodigo() == midia.getCodigo()) {
 				return false;
@@ -61,7 +62,10 @@ public class Midiateca implements Iterador {
 
 	@Override
 	public boolean hasNext() {
-		return contador < midias.size();
+		if (contador < midias.size()) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override

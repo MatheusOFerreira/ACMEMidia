@@ -17,25 +17,26 @@ public class ACMEMidia {
 	private PrintStream saidaPadrao = System.out; // Guarda a saida padrao - tela (console)
 	private final String nomeArquivoEntrada = "entrada.txt"; // Nome do arquivo de entrada de dados
 	private final String nomeArquivoSaida = "saida.txt"; // Nome do arquivo de saida de dados
-	
+
 	public ACMEMidia() {
 		midiateca = new Midiateca();
-		redirecionaES();    // Redireciona E/S para arquivos
+		redirecionaES(); // Redireciona E/S para arquivos
 	}
-	
+
 	public void executar() {
 		cadastraVideos();
 		cadastraMusica();
-		
+		dadosMidia();
+
 	}
-	
+
 	private void cadastraVideos() {
 		int ano, codigo, qualidade;
 		String titulo, categoriaEntrada;
 		Categoria categoria;
 		codigo = sc.nextInt();
 		sc.nextLine();
-		while(codigo != -1) {
+		while (codigo != -1) {
 			titulo = sc.nextLine();
 			ano = sc.nextInt();
 			sc.nextLine();
@@ -44,9 +45,9 @@ public class ACMEMidia {
 			qualidade = sc.nextInt();
 			sc.nextLine();
 			Video video = new Video(codigo, titulo, ano, categoria, qualidade);
-			
-			if(midiateca.cadastraMidia(video)) {
-				System.out.println("1: " + video.getCodigo() + ", " + video.getTitulo() + ", " + video.getAno() + ", " 
+
+			if (midiateca.cadastraMidia(video)) {
+				System.out.println("1: " + video.getCodigo() + ", " + video.getTitulo() + ", " + video.getAno() + ", "
 						+ video.getCategoria() + ", " + video.getQualidade());
 			} else {
 				System.out.println("1:Erro-video com codigo repetido: " + codigo);
@@ -55,7 +56,7 @@ public class ACMEMidia {
 			sc.nextLine();
 		}
 	}
-	
+
 	private void cadastraMusica() {
 		int codigo, ano;
 		double duracao;
@@ -63,7 +64,7 @@ public class ACMEMidia {
 		Categoria categoria;
 		codigo = sc.nextInt();
 		sc.nextLine();
-		while(codigo != -1) {
+		while (codigo != -1) {
 			titulo = sc.nextLine();
 			ano = sc.nextInt();
 			sc.nextLine();
@@ -71,9 +72,9 @@ public class ACMEMidia {
 			categoria = Categoria.valueOf(categoriaEntrada);
 			duracao = sc.nextDouble();
 			Musica musica = new Musica(codigo, titulo, ano, categoria, duracao);
-			if(midiateca.cadastraMidia(musica)) {
+			if (midiateca.cadastraMidia(musica)) {
 				System.out.println("2: " + musica.getCodigo() + ", " + musica.getTitulo() + ", " + musica.getAno()
-				+ ", " + musica.getCategoria() + ", " + musica.getDuracao());
+						+ ", " + musica.getCategoria() + ", " + musica.getDuracao());
 			} else {
 				System.out.println("2:Erro-musica com codigo repetido: " + codigo);
 			}
@@ -81,33 +82,37 @@ public class ACMEMidia {
 			sc.nextLine();
 		}
 	}
-	
+
 	private void dadosMidia() {
-		
-	}
-	
-	private void dadosMidiaCategoria() {
-		
-	}
-	
-	private void dadosVideoQualidade() {
-		
-	}
-	
-	private void dadosMusicaDuracao() {
-		
-	}
-	
-	private void removeMidia() {
-		
-	}
-	
-	private void somatorioLocacoes() {
-		
+		int codigo = sc.nextInt();
+		sc.nextLine();
+		if (midiateca.consultaPorCodigo(codigo) == null) {
+			System.out.println("3:Codigo inexistente.");
+		} else {
+			System.out.println("3: " + midiateca.consultaPorCodigo(codigo));
+		}
 	}
 
-	
-	
+	private void dadosMidiaCategoria() {
+
+	}
+
+	private void dadosVideoQualidade() {
+
+	}
+
+	private void dadosMusicaDuracao() {
+
+	}
+
+	private void removeMidia() {
+
+	}
+
+	private void somatorioLocacoes() {
+
+	}
+
 	// Redireciona E/S para arquivos
 	// Chame este metodo para redirecionar a leitura e escrita de dados para
 	// arquivos

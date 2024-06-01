@@ -19,16 +19,16 @@ public class Musica extends Midia {
 
 		switch (getCategoria()) {
 		case ACA:
-			valorPorMinuto = 1.0;
+			valorPorMinuto = 0.9;
 			break;
 		case DRA:
-			valorPorMinuto = 0.8;
+			valorPorMinuto = 0.7;
 			break;
 		case FIC:
-			valorPorMinuto = 1.2;
+			valorPorMinuto = 0.5;
 			break;
 		case ROM:
-			valorPorMinuto = 0.9;
+			valorPorMinuto = 0.3;
 			break;
 		default:
 			throw new IllegalArgumentException("Categoria desconhecida: " + getCategoria());
@@ -36,5 +36,11 @@ public class Musica extends Midia {
 
 		return valorPorMinuto * duracao;
 	}
+	
+	//Sobreescrita do toString da Midia com o atributo duracao
+	@Override
+    public String toString() {
+        return super.toString() + "," + duracao + "," + calculaLocacao();
+    }
 
 }

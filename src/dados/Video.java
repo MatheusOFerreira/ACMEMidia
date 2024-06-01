@@ -24,5 +24,11 @@ public class Video extends Midia {
 			valorLocacao = 10.00;
 		return valorLocacao;
 	}
+	
+	//Sobreescrita do toString da Midia com o atributo qualidade
+	@Override
+    public String toString() {
+        return super.toString() + "," + qualidade;
+    }
 
 }

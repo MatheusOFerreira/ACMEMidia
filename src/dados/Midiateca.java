@@ -34,7 +34,7 @@ public class Midiateca implements Iterador {
 		}
 		return null;
 	}
-
+	
 	public ArrayList<Midia> consultaPorCategoria(Categoria categoria) {
 		ArrayList<Midia> result = new ArrayList<>();
 		for (Midia m : midias) {

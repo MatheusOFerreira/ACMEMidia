@@ -27,6 +27,7 @@ public class ACMEMidia {
 		cadastraVideos();
 		cadastraMusica();
 		dadosMidia();
+		dadosMidiaCategoria();
 
 	}
 
@@ -94,7 +95,15 @@ public class ACMEMidia {
 	}
 
 	private void dadosMidiaCategoria() {
-
+		String categoriaEntrada = sc.nextLine();
+		Categoria categoria = Categoria.valueOf(categoriaEntrada);
+		if (midiateca.consultaPorCategoria(categoria).isEmpty()) {
+			System.out.println("4: Nenhuma midia encontrada");
+		} else {
+			for (Midia m : midiateca.consultaPorCategoria(categoria)) {
+				System.out.println("4: " + m);
+			}	
+		}
 	}
 
 	private void dadosVideoQualidade() {

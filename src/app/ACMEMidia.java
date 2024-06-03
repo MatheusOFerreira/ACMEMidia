@@ -24,10 +24,14 @@ public class ACMEMidia {
 	}
 
 	public void executar() {
-		cadastraVideos();
-		cadastraMusica();
-		dadosMidia();
-		dadosMidiaCategoria();
+		cadastraVideos(); // 1
+		cadastraMusica(); // 2
+		dadosMidia(); // 3
+		dadosMidiaCategoria(); // 4
+		dadosVideoQualidade(); // 5
+		dadosMusicaDuracao(); // 6
+		removeMidia(); // 7
+		somatorioLocacoes(); // 8
 
 	}
 
@@ -96,30 +100,63 @@ public class ACMEMidia {
 
 	private void dadosMidiaCategoria() {
 		String categoriaEntrada = sc.nextLine();
-		Categoria categoria = Categoria.valueOf(categoriaEntrada);
-		if (midiateca.consultaPorCategoria(categoria).isEmpty()) {
-			System.out.println("4: Nenhuma midia encontrada");
-		} else {
-			for (Midia m : midiateca.consultaPorCategoria(categoria)) {
-				System.out.println("4: " + m);
-			}	
-		}
+	    Categoria categoria;
+	    try {
+	        categoria = Categoria.valueOf(categoriaEntrada);
+	    } catch (IllegalArgumentException e) {
+	        System.out.println("4: Nenhuma midia encontrada");
+	        return;
+	    }
+
+	    if (midiateca.consultaPorCategoria(categoria).isEmpty()) {
+	        System.out.println("4: Nenhuma midia encontrada");
+	    } else {
+	        for (Midia m : midiateca.consultaPorCategoria(categoria)) {
+	            System.out.println("4: " + m);
+	        }
+	    }
 	}
 
 	private void dadosVideoQualidade() {
-
+		int qualidade = sc.nextInt();
+		sc.nextLine();
+		if (!midiateca.consultaPorQualidade(qualidade).isEmpty()) {
+			for (Midia m : midiateca.consultaPorQualidade(qualidade)) {
+				System.out.println("5: " + m);
+			}
+		} else {
+			System.out.println("5: Qualidade inexistente");
+		}
 	}
 
 	private void dadosMusicaDuracao() {
-
+		Midia aux = midiateca.musicaComMaiorDuracao();
+		if (aux != null) {
+			Musica musica = (Musica) aux;
+			System.out.println("6: " + musica.getTitulo() + ", " + musica.getDuracao());
+		} else {
+			System.out.println("6: Nenhuma música encontrada.");
+		}
 	}
 
 	private void removeMidia() {
-
+		int codigo = sc.nextInt();
+		sc.nextLine();
+		Midia aux = midiateca.removeMidia(codigo);
+		if (aux != null) {
+			System.out.println("7: " + aux);
+		} else {
+			System.out.println("7:Codigo inexistente.");
+		}
 	}
 
 	private void somatorioLocacoes() {
-
+		double somatorio = midiateca.somatorioLocacoes();
+		if (somatorio == 0) {
+			System.out.println("8: Nenhuma midia encontrada.");
+		} else {
+			System.out.println("8: " + somatorio);
+		}
 	}
 
 	// Redireciona E/S para arquivos

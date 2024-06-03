@@ -36,11 +36,12 @@ public class Musica extends Midia {
 
 		return valorPorMinuto * duracao;
 	}
-	
-	//Sobreescrita do toString da Midia com o atributo duracao
+
+	// Sobreescrita do toString da Midia com o atributo duracao
 	@Override
-    public String toString() {
-        return super.toString() + "," + duracao + "," + calculaLocacao();
-    }
+	public String toString() {
+		return super.toString() + "," + String.format("%.2f", duracao) + "," + String.format("%.2f", calculaLocacao());
+		
+	}
 
 }

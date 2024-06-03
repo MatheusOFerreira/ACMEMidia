@@ -33,10 +33,10 @@ public abstract class Midia {
 	}
 
 	public abstract double calculaLocacao();
-	
+
 	@Override
-    public String toString() {
-        return codigo + ", " + titulo + ", " + ano + ", " + categoria;
-    }
+	public String toString() {
+		return codigo + ", " + titulo + ", " + ano + ", " + categoria;
+	}
 
 }

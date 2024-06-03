@@ -34,25 +34,60 @@ public class Midiateca implements Iterador {
 		}
 		return null;
 	}
-	
+
 	public ArrayList<Midia> consultaPorCategoria(Categoria categoria) {
-		ArrayList<Midia> result = new ArrayList<>();
+		ArrayList<Midia> resultado = new ArrayList<>();
 		for (Midia m : midias) {
 			if (m.getCategoria() == categoria) {
-				result.add(m);
+				resultado.add(m);
 			}
 		}
-		return result;
+		return resultado;
 	}
 
-	public boolean removeMidia(int codigo) {
+	// Método novo 
+	public ArrayList<Midia> consultaPorQualidade(int qualidade) {
+	    ArrayList<Midia> resultado = new ArrayList<>();
+	    for (Midia m : midias) {
+	        if (m instanceof Video && ((Video) m).getQualidade() == qualidade) {
+	            resultado.add(m);
+	        }
+	    }
+	    return resultado;
+	}
+	
+	// Método novo
+	public Midia musicaComMaiorDuracao(){
+		Midia aux = null;
+		if(midias.isEmpty()) {
+			return null; // Nenhuma musica
+		}
+		for(Midia m : midias) {
+			if((m instanceof Musica) && (aux == null || ((Musica) m).getDuracao() > ((Musica) aux).getDuracao())) {
+				aux = m;
+			}
+		}
+		return aux;
+	}
+	
+	// Método novo
+	public double somatorioLocacoes() {
+		double somatorio = 0;
+		for(Midia m : midias) {
+			somatorio += m.calculaLocacao();
+		}
+		return somatorio;
+	}
+	
+	// Método novo
+	public Midia removeMidia(int codigo) {
 		for (Midia m : midias) {
 			if (m.getCodigo() == codigo) {
 				midias.remove(m);
-				return true;
+				return m;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	@Override

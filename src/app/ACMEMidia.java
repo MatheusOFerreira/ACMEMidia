@@ -158,6 +158,27 @@ public class ACMEMidia {
 			System.out.println("8: " + somatorio);
 		}
 	}
+	
+	// Metodo adicional
+	private void dadosMusicaComLocacaoProximoMedia() {
+		Midia aux = midiateca.musicaComLocacaoProximaMedia();
+		if(aux == null) {
+			System.out.println("9: Nenhuma musica encontrada.");
+		} else {
+			double media = midiateca.mediaLocacao();
+			System.out.println("9: " + String.format("%.2f", media) + ", " + aux);
+		}
+	}
+	
+	// Metodo adicional
+	private void dadosMidiaMaisNova() {
+		Midia aux = midiateca.midiaNova();
+		if(aux == null) {
+			System.out.println("10:Nenhuma midia encontrada.");
+		} else {
+			System.out.println("10: " + aux.getCodigo() + ", " + aux.getTitulo() + ", " + aux.getAno());
+		}
+	}
 
 	// Redireciona E/S para arquivos
 	// Chame este metodo para redirecionar a leitura e escrita de dados para

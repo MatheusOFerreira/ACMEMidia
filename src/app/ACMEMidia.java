@@ -134,7 +134,7 @@ public class ACMEMidia {
 		Midia aux = midiateca.musicaComMaiorDuracao();
 		if (aux != null) {
 			Musica musica = (Musica) aux;
-			System.out.println("6: " + musica.getTitulo() + ", " + musica.getDuracao());
+			System.out.println("6: " + musica.getTitulo() + ", " + String.format("%.2f", musica.getDuracao()));
 		} else {
 			System.out.println("6: Nenhuma música encontrada.");
 		}

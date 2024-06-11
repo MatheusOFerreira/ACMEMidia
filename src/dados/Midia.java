@@ -36,7 +36,7 @@ public abstract class Midia {
 
 	@Override
 	public String toString() {
-		return codigo + ", " + titulo + ", " + ano + ", " + categoria;
+		return codigo + ", " + titulo + ", " + ano + ", " + categoria.getNome();
 	}
 
 }

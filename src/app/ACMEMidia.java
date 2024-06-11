@@ -78,8 +78,7 @@ public class ACMEMidia {
 			duracao = sc.nextDouble();
 			Musica musica = new Musica(codigo, titulo, ano, categoria, duracao);
 			if (midiateca.cadastraMidia(musica)) {
-				System.out.println("2: " + musica.getCodigo() + ", " + musica.getTitulo() + ", " + musica.getAno()
-						+ ", " + musica.getCategoria() + ", " + musica.getDuracao());
+				System.out.println("2: " + musica);
 			} else {
 				System.out.println("2:Erro-musica com codigo repetido: " + codigo);
 			}
@@ -91,10 +90,11 @@ public class ACMEMidia {
 	private void dadosMidia() {
 		int codigo = sc.nextInt();
 		sc.nextLine();
-		if (midiateca.consultaPorCodigo(codigo) == null) {
+		Midia midia = midiateca.consultaPorCodigo(codigo);
+		if (midia == null) {
 			System.out.println("3:Codigo inexistente.");
 		} else {
-			System.out.println("3: " + midiateca.consultaPorCodigo(codigo));
+			System.out.println("3: " + midia);
 		}
 	}
 

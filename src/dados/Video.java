@@ -16,7 +16,7 @@ public class Video extends Midia {
 	@Override
 	public double calculaLocacao() {
 		double valorLocacao = 0.0;
-		if (super.getAno() == 2024) {
+		if (super.getAno() >= 2024) {
 			valorLocacao = 20.00;
 		} else if (super.getAno() >= 2000 && super.getAno() <= 2023) {
 			valorLocacao = 15.00;

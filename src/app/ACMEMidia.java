@@ -53,7 +53,7 @@ public class ACMEMidia {
 
 			if (midiateca.cadastraMidia(video)) {
 				System.out.println("1: " + video.getCodigo() + ", " + video.getTitulo() + ", " + video.getAno() + ", "
-						+ video.getCategoria() + ", " + video.getQualidade());
+						+ video.getCategoria().getNome() + ", " + video.getQualidade());
 			} else {
 				System.out.println("1:Erro-video com codigo repetido: " + codigo);
 			}
@@ -78,7 +78,8 @@ public class ACMEMidia {
 			duracao = sc.nextDouble();
 			Musica musica = new Musica(codigo, titulo, ano, categoria, duracao);
 			if (midiateca.cadastraMidia(musica)) {
-				System.out.println("2: " + musica);
+				System.out.println("2: " + musica.getCodigo() + ", " + musica.getTitulo() + ", " + musica.getAno() + ", "
+						+ musica.getCategoria().getNome() + ", " + musica.getDuracao());
 			} else {
 				System.out.println("2:Erro-musica com codigo repetido: " + codigo);
 			}

@@ -80,14 +80,14 @@ public class Midiateca implements Iterador {
 	}
 
 	// Método novo
-	public Midia removeMidia(int codigo) {
+	public boolean removeMidia(int codigo) {
 		for (Midia m : midias) {
 			if (m.getCodigo() == codigo) {
 				midias.remove(m);
-				return m;
+				return true;
 			}
 		}
-		return null;
+		return false;
 	}
 
 	// Método extra
@@ -134,7 +134,7 @@ public class Midiateca implements Iterador {
 
 		Midia maisNova = midias.get(0);
 		for (Midia m : midias) {
-			if (m.getAno() > maisNova.getAno()) { // maior = mais nova
+			if (m.getAno() > maisNova.getAno()) {
 				maisNova = m;
 			}
 		}

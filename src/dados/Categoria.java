@@ -3,7 +3,7 @@ package dados;
 public enum Categoria {
 	ACA("Acao"), DRA("Drama"), FIC("Ficcao"), ROM("Romance");
 
-	private String nome;
+	private final String nome;
 
 	private Categoria(String nome) {
 		this.nome = nome;

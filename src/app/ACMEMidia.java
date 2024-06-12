@@ -32,6 +32,8 @@ public class ACMEMidia {
 		dadosMusicaDuracao(); // 6
 		removeMidia(); // 7
 		somatorioLocacoes(); // 8
+		dadosMusicaComLocacaoProximoMedia();
+		dadosMidiaMaisNova();
 
 	}
 
@@ -143,8 +145,9 @@ public class ACMEMidia {
 	private void removeMidia() {
 		int codigo = sc.nextInt();
 		sc.nextLine();
+		Midia aux = midiateca.consultaPorCodigo(codigo);
 		if (midiateca.removeMidia(codigo)) {
-			System.out.println("7: " + midiateca.consultaPorCodigo(codigo));
+			System.out.println("7: " + aux);
 		} else {
 			System.out.println("7:Codigo inexistente.");
 		}
